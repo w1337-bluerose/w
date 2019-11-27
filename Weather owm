@@ -1,0 +1,23 @@
+import colorama
+import pyowm
+from colorama import init
+from colorama import Fore, Back, Style
+
+init()
+
+owm = pyowm.OWM('c0a1dbbc5b0aa157caf1b98ab70a158f', language = "ru")
+
+print(Back.CYAN)
+print(Fore.BLACK)
+co = input("Enter your town: ")
+
+observation = owm.weather_at_place(co)
+
+w = observation.get_weather()
+temp = w.get_temperature('celsius') ["temp"]
+
+print(Back.RED)
+print(Fore.BLACK)
+
+print("Weather in " + str(co) + ":" +  w.get_detailed_status())
+print("Temperature in " + str(co) + ":" + str(temp))
